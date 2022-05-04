@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="greedystyle2.css">
-    <title>Document</title>
+    <title>Calculator</title>
 </head>
 <body>
     <div class="calculator">
@@ -15,47 +16,56 @@
         <div>
             <input id="result" type="text">
         </div>
+        <div class="calculator__display--bare">
+          <span class="calculator__operend--left"></span>
+          <span class="calculator__operator"></span>
+          <span class="calculator__operend--right"></span>
+          <span class="calculator__equal"></span>
+          <span class="calculator__result"></span>
+        </div>
+        <div class="calculator__display--for-advanced">0</div>
 
         <div>
-            <div class="buttons">
+            <div class="calculator__buttons">
                 <div class="buttonwrap">
-                    <button class="middle">%</button>
-                    <button class="middle">CE</button>
-                    <button class="middle">C</button>
-                    <button class="middle">DEL</button>
+                    <button class="middle percentage">%</button>
+                    <button class="middle deleteAll">CE</button>
+                    <button class="middle clear">C</button>
+                    <button class="middle delete">DEL</button>
                 </div>
                 <div class="buttonwrap">
-                    <button class="middle">1/X</button>
-                    <button class="middle">x<sup>2</button>
-                    <button class="middle">2&radic;</button>
-                    <button class="middle">&divide;</button>
+                    <button class="middle one-Xth">1/X</button>
+                    <button class="middle square">x<sup>2</button>
+                    <button class="middle root">2&radic;</button>
+                    <button class="middle operator">&divide;</button>
                 </div>
                 <div class="buttonwrap">
-                    <button class="light">7</button>
-                    <button class="light">8</button>
-                    <button class="light">9</button>
-                    <button class="middle">&times;</button>
+                    <button class="light number">7</button>
+                    <button class="light number">8</button>
+                    <button class="light number">9</button>
+                    <button class="middle operator">&times;</button>
                 </div>
                 <div class="buttonwrap">
-                    <button class="light">4</button>
-                    <button class="light">5</button>
-                    <button class="light">6</button>
-                    <button class="middle">-</button>
+                    <button class="light number">4</button>
+                    <button class="light number">5</button>
+                    <button class="light number">6</button>
+                    <button class="middle operator">-</button>
                 </div>
                 <div class="buttonwrap">
-                    <button class="light">1</button>
-                    <button class="light">2</button>
-                    <button class="light">3</button>
-                    <button class="middle">+</button>
+                    <button class="light number">1</button>
+                    <button class="light number">2</button>
+                    <button class="light number">3</button>
+                    <button class="middle operator">+</button>
+                
                 </div>
                 <div class="buttonwrap">
                     <button class="light">+/-</button>
-                    <button class="light">0</button>
-                    <button class="light">.</button>
-                    <button class="sky">=</button>
+                    <button class="light number">0</button>
+                    <button class="light dot">.</button>
+                    <button class="sky calculate">=</button>
             </div>
         </div>
     </div>
-    <script src='./script.js'></script>
+    <script type="text/javascript" src='script.js'></script>
 </body>
 </html>
