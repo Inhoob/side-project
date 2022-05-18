@@ -1,4 +1,3 @@
-// 여기에는 유용한 유효성 검증 함수가 있습니다
 
 // [유효성 검증 함수]: 영어 또는 숫자만 가능
 function onlyNumberAndEnglish(str) {

@@ -1,84 +1,95 @@
 document.write("<script src='validator.js'></script>");
 
+let elInputUsername = document.querySelector("#username");
+console.log(elInputUsername);
 
+let elFailureMessage = document.querySelector(".failure-message");
+elFailureMessage.classList.remove("hide");
+
+let elSuccessMessage = document.querySelector(".success-message");
+
+let elInputPassword = document.querySelector("#password");
+let elInputPasswordRetype = document.querySelector("#password-retype");
+
+let elMismatchMessage = document.querySelector(".mismatch-message");
+
+let isKorean = document.querySelector(".notKorean");
+elInputUsername.onkeyup = function () {
+  // if (!elInputUsername.value) {
+  //   isKorean.style.display = "none";
+  // }
+  //only number and english(elinputusername.value)가 false이면 hide remove
+  if (onlyNumberAndEnglish(elInputUsername.value)) {
+    isKorean.classList.add("hide");
+  } else {
+    isKorean.classList.remove("hide");
+  }
+  //4글자 이상, 유효성 검사
+  if (
+    isMoreThan4Length(elInputUsername.value) &&
+    onlyNumberAndEnglish(elInputUsername.value)
+  ) {
+    //성공메세지 보이기
+    elSuccessMessage.classList.remove("hide");
+    //실패메세지 숨기기
+    elFailureMessage.classList.add("hide");
+  } else {
+    //성공메세지 숨기기
+    elSuccessMessage.classList.add("hide");
+    //실패메세지 보이기
+    elFailureMessage.classList.remove("hide");
+  }
+};
+
+elInputPasswordRetype.onkeyup = function () {
+  if (isMatch(elInputPassword.value, elInputPasswordRetype.value)) {
+    elMismatchMessage.classList.add("hide");
+  } else {
+    elMismatchMessage.classList.remove("hide");
+  }
+};
 function isMoreThan4Length(value) {
-
-  return value.length>=4
+  return value.length >= 4;
 }
 
-function isMatch (password1, password2) {
-  
-  
-  return password1 === password2
+function isMatch(password1, password2) {
+  return password1 === password2;
 }
 
+let today = new Date(); //Date객체로 불러옴
+let elInputBirth = document.querySelector("#birth");
+elInputBirth.onchange = function beforeToday(e) {
+  const birthday = e.target.value.split("-");
 
-//password쪽 검사 일치하지않으면 일치하지않는다
-//변수로 #password,#passwordretype,.mismatch-message
-//isMatch(p1,p2)=>boolean  onkeyup 으로 비교하면되고
-//if(ismatch==true) = isMatch hide add if(ismatch==false)->hide remove
-//
-let elInputPassword = document.querySelector('#password')
-let elInputPasswordRetype = document.querySelector('#password-retype')
-let elMismatchMessage = document.querySelector('.mismatch-message')
-let elInputUsername = document.querySelector('#username')
-
-
-let elFailureMessage = document.querySelector('.failure-message')
-let elSuccessMessage = document.querySelector('.success-message')
-let isKorean = document.querySelector('.notkorean')
-elFailureMessage.classList.remove('hide') //이게 실행되면 hide가 지워지면서 보이게됨
-
-//onkeyup 키보드가 눌렸다 떼어졌을때
-//이벤트핸들러
-elInputPasswordRetype.onkeyup = function(){
-  if(isMatch(elInputPassword.value,elInputPasswordRetype.value)){
-    elMismatchMessage.classList.add('hide')
-  }else{
-    elMismatchMessage.classList.remove('hide')
+  if (new Date(birthday[0], birthday[1] - 1, birthday[2]) > today) {
+    // 선택한 날짜가 오늘보다 더 크면
+    alert("오늘보다 전 날짜를 클릭하세요");
+    elInputBirth.value = ""; // alert확인창 눌렀을 때 클릭한 날짜가 뜨지 않게
   }
-}
-elInputUsername.onkeyup = function(){
-    //onlynumberandenglish === false {}
-    if(onlyNumberAndEnglish(elInputUsername.value)===true){
-      isKorean.classList.add('hide')
-    }else{
-      isKorean.classList.remove('hide')
-    }
-    console.log(elInputUsername.value)
-    if(isMoreThan4Length(elInputUsername.value)){
-        elSuccessMessage.classList.remove('hide')
-        elFailureMessage.classList.add('hide')
-    }else{
-        elSuccessMessage.classList.add('hide')
-        elFailureMessage.classList.remove('hide')
-    }
-}
+};
 
-let btn = document.querySelector('.btn')
-btn.addEventListener('click', function(){
-  // onlyNumberAndEnglish(elInput.value) if 이게 폴스면 alert(id를 확인하세요)
-  // strongPassword(elinputpass.value) if 이게 폴스면 alert('강력한비밀번호필요')
-  // 
-  // elInputUsername, elInputPassword.value
-  // 내가 하고싶은 것 => 
-  if(onlyNumberAndEnglish(elInputUsername.value)===false){
-    alert('ID를 확인하세요')
+let btn = document.querySelector(".btn");
+btn.addEventListener("click", function () {
+  //클릭했을 때 1. password랑 password-retype이 같은지 확인
+  // 같으면 2. 강력한 비밀번호인지 확인
+  // 다르면 비밀번호 확인을 다시 하라는 alert
+  if (
+    !onlyNumberAndEnglish(elInputUsername.value) ||
+    !isMoreThan4Length(elInputUsername.value)
+  ) {
+    alert("아이디를 확인해주세요");
+  } else if (!elInputBirth.value) {
+    alert("생일을 입력해 주세요");
+  } else if (!isMatch(elInputPassword.value, elInputPasswordRetype.value)) {
+    // 안맞으면 비밀번호 확인, 맞으면 또 강력한 비밀번호 확인
+    alert("비밀번호가 일치하지 않습니다");
+  } else if (
+    isMatch(elInputPassword.value, elInputPasswordRetype.value) &&
+    !strongPassword(elInputPassword.value)
+  ) {
+    alert("강력한 비밀번호가 필요합니다");
+  } else {
+    alert("회원가입완료");
   }
-  if(strongPassword(elInputPassword.value)===false){
-    alert('강력한 비밀번호가 필요합니다')
-  }
-})
-
-function handler(e){
-  alert(e.target.value)
-  console.log(e.target.value.split('-')[0])
-}
-//year >=2023 {} // month // 
-let birthday = document.querySelector('#birth').value
-
-let today = new Date()
-let year = today.getFullYear()
-let month = today.getMonth()+1
-let date = today.getDate()
-
+  //모든 조건이 다 만족이 되었을 때 id도 통과하고 연도월일이 빈 배열이 아니고 비밀번호도 통과하면 password == retypepassword가 같을 때
+});

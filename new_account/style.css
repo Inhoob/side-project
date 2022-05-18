@@ -1,8 +1,86 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fafafa;
+}
+.container {
+  width: 350px;
+  height: 504px;
+  background-color: white;
+  border: 1px solid #dbdbdb;
+}
+
+/* 인스타그램 이미지 가운데 */
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 100px;
+}
+.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+h1 {
+  /* 폰트설정은 나중에 */
+  text-align: center;
+  font-size: 17px;
+  font-weight: 600;
+}
+.loginBtn {
+  /* border: 1px solid #dbdbdb; */
+  background-color: #0095f6;
+  width: 270px;
+  height: 32px;
+  color: white;
+  font-weight: 600;
+  border-radius: 4px;
+}
+.or {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dash {
+  width: 100px;
+  border: 0.5px solid gray;
+  margin: 18px;
+}
 .hide {
   display: none;
 }
-
-.hidepw{
-  display:none;
-
+fieldset {
+  width: 270px;
+  height: 36px;
+  border-radius: 4px;
+  margin: 3px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #dbdbdb;
+}
+fieldset > input {
+  all: unset;
+  width: 98%;
+  height: 3.5vh;
+  margin-top:6px;
+  padding-left: 9px;
+}
+#birth {
+  padding-top: 5px;
+}
+.btn {
+  margin-top: 6px;
+}
+i {
+  margin-right: 5px;
+  margin-top: 5px;
 }
