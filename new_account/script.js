@@ -75,7 +75,7 @@ btn.addEventListener("click", function () {
   // 다르면 비밀번호 확인을 다시 하라는 alert
   if (
     !onlyNumberAndEnglish(elInputUsername.value) ||
-    !isMoreThan4Length(elInputUsername.value)
+    !isMoreThan4Length(elInputUsername.value)  
   ) {
     alert("아이디를 확인해주세요");
   } else if (!elInputBirth.value) {
