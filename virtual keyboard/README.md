@@ -8,3 +8,7 @@ npm i -D webpack webpack-cli webpack-dev-server 웹팩설치
 npm i -D html-webpack-plugin
 npm i -D mini-css-extract-plugin css-loader css-minimizer-webpack-plugin
 css와 html 합쳐줄 모듈
+
+npm i -D eslint =>eslint 설치
+npm install --save-dev --save-exact prettier =>prettier 설치
+npm i -D eslint-config-prettier eslint-plugin-prettier=> config는 포맷팅 겹치는부분 비활성화, plugin은 eslint에 prettier의 포맷팅을 추가
