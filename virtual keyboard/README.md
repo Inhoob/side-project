@@ -59,3 +59,7 @@ input:checked + .slider::before {
 
 em과 rem 차이점
 em,rem 둘다 상대적 크기인데 em은 현재의 태그내에서의 크기 기준이고 rem은 root 기준이다.
+
+## Font 변경
+
+keyboard.js 의 font select부분 참조
