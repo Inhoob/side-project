@@ -1,5 +1,6 @@
 ## Webpack
 
+https://medium.com/@woody_dev/js-webpack-1-%EC%9B%B9%ED%8C%A9%EC%9D%B4%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80-f29ebca31da4<<webpack관련<br/>
 웹개발에 필요한 html, css ,js를 하나로 압축해줌
 npm i -D webpack webpack-cli webpack-dev-server 웹팩설치
 -D라는건 dev dependency에 패키지를 설치해주겠다는 뜻이다 로컬개발이나 테스트에만 필요한 패키지를 의미
@@ -63,3 +64,15 @@ em,rem 둘다 상대적 크기인데 em은 현재의 태그내에서의 크기 �
 ## Font 변경
 
 keyboard.js 의 font select부분 참조
+
+## Event에 대한 이해
+
+특정 element를 클릭해서 event가 발생할 때 모든 상위 element 및 document까지 event가 발생한다. (event bubbling이라고 함)
+target은 실제로 이벤트가 발생한 대상. currentTarget은 event를 걸어놓은 대상.
+event를 콘솔을 찍어보면 event.bubbles라는 속성이 있는것을 볼 수 있다. document에 bubbling이 일어나는것으로 모든 키보드의 키들에 event를 지정하지 않고 설정할 수 있다
+keyboard 이벤트를 input에 걸면 focus out 될 때 어디에서 걸렸는지 알 수 없기 때문에 document에 건다.
+
+key를 누를때 event를 보면 event의 속성으로 code:"KeyA"와 key:"a"를 볼 수 있다
+
+Event가 발생할 때 classList.add 와 classList.remove를 통해 css속성을 부여하고 제거
+?.classList.add <<이런식으로 앞에 물음표를 붙여주는걸 optional chaining이라고 한다. error가 발생하지않고 undefined를 리턴하고 함수를 실행하지 않는다
