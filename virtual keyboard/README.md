@@ -76,3 +76,16 @@ key를 누를때 event를 보면 event의 속성으로 code:"KeyA"와 key:"a"를
 
 Event가 발생할 때 classList.add 와 classList.remove를 통해 css속성을 부여하고 제거
 ?.classList.add <<이런식으로 앞에 물음표를 붙여주는걸 optional chaining이라고 한다. error가 발생하지않고 undefined를 리턴하고 함수를 실행하지 않는다
+
+### 입력값이 한글인가? 이 부분은 판별해서 클래스이름에 error를 토글로 넣어주거나 빼거나 한다.(toggle 검색)
+
+/[ㄱ-ㅎ/ㅏ-ㅣ/가-힣]/.test()
+<br>
+<br>
+
+### 바인딩개념
+
+```javascript
+document.addEventListener("keydown", this.#onKeyDown.bind(this)); //이 두개를 bind 하는 이유는 함수에서 this를 쓰고 있는데 전역객체의 this는 윈도우다. 윈도우에 #inputEl같은 요소가 없기 때문에 bind해주는 것
+document.addEventListener("keyup", this.#onKeyUp.bind(this));
+```
