@@ -89,3 +89,12 @@ Event가 발생할 때 classList.add 와 classList.remove를 통해 css속성을
 document.addEventListener("keydown", this.#onKeyDown.bind(this)); //이 두개를 bind 하는 이유는 함수에서 this를 쓰고 있는데 전역객체의 this는 윈도우다. 윈도우에 #inputEl같은 요소가 없기 때문에 bind해주는 것
 document.addEventListener("keyup", this.#onKeyUp.bind(this));
 ```
+
+마우스 입력 UI
+보통 마우스로 클릭했다가 떼지 않은채로 쭉 빼는 경우는 입력하고 싶지 않을때이다. 그렇기 때문에 onMouseUp과 onMouseDown의 요소가 같을 때
+그 입력을 전달하면 된다.
+
+타입캐스팅
+!!을 붙여 확실하게 Boolean 값으로 형변환 해준다.
+
+마우스와 키보드 동시입력 방지
