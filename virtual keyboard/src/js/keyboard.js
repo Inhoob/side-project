@@ -36,6 +36,7 @@ export class Keyboard {
     if (this.#keyPress) return;
     this.#mouseDown = false;
     const keyEl = event.target.closest("div.key");
+    // const keyEl = event.target;
     const isActive = !!keyEl?.classList.contains("active");
     const val = keyEl?.dataset.val; //data-val:'1' 인 경우 dataset.val으로 불러올 수 있다
     if (isActive && !!val && val !== "Space" && val !== "Backspace") {
@@ -44,7 +45,7 @@ export class Keyboard {
     if (isActive && val === "Space") {
       this.#inputEl.value += " ";
     }
-    if (isActive && val === "BackSpace") {
+    if (isActive && val === "Backspace") {
       this.#inputEl.value = this.#inputEl.value.slice(0, -1);
     }
     this.#keyboardEl.querySelector(".active")?.classList.remove("active");
@@ -53,8 +54,10 @@ export class Keyboard {
     if (this.#keyPress) return;
     this.#mouseDown = true;
     event.target.closest("div.key")?.classList.add("active"); //closest는 div.key라는 css 선택자를 찾을때까지 root방향으로 탐색
+    // event.target?.classList.add("active"); //closest는 div.key라는 css 선택자를 찾을때까지 root방향으로 탐색
   }
   #onInput(event) {
+    console.log(event.target.value);
     event.target.value = event.target.value.replace(/[ㄱ-ㅎ/ㅏ-ㅣ/가-힣]/, "");
   }
   #onKeyDown(event) {
