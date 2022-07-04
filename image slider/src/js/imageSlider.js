@@ -5,11 +5,19 @@ export default class imageSlider {
 
   #slideWidth = 0;
 
+  #intervalId;
+
+  #autoPlay; // autoplay 정지를 위해 상태 지정
+
   sliderWrapEl;
 
   sliderListEl;
 
   previousBtnEl;
+
+  indicatorWrapEl;
+
+  controlWrapEl;
 
   constructor() {
     this.assignElement();
@@ -19,6 +27,7 @@ export default class imageSlider {
     this.addEvent();
     this.createIndicator();
     this.setIndicator();
+    this.initAutoplay();
   }
 
   assignElement() {
@@ -27,6 +36,11 @@ export default class imageSlider {
     this.nextBtnEl = this.sliderWrapEl.querySelector('#next');
     this.previousBtnEl = this.sliderWrapEl.querySelector('#previous');
     this.indicatorWrapEl = this.sliderWrapEl.querySelector('#indicator-wrap');
+    this.controlWrapEl = this.sliderWrapEl.querySelector('#control-wrap');
+  }
+
+  initAutoplay() {
+    this.#intervalId = setInterval(this.moveToRight.bind(this), 3000);
   }
 
   initSlideNumber() {
@@ -48,6 +62,21 @@ export default class imageSlider {
       'click',
       this.onClickIndicator.bind(this),
     );
+    this.controlWrapEl.addEventListener('click', this.togglePlay.bind(this));
+  }
+
+  togglePlay(event) {
+    if (event.target.dataset.status === 'play') {
+      this.#autoPlay = true;
+      this.controlWrapEl.classList.add('play');
+      this.controlWrapEl.classList.remove('pause');
+      this.initAutoplay();
+    } else if (event.target.dataset.status === 'pause') {
+      this.#autoPlay = false;
+      this.controlWrapEl.classList.add('pause');
+      this.controlWrapEl.classList.remove('play');
+      clearInterval(this.#intervalId);
+    }
   }
 
   onClickIndicator(event) {
