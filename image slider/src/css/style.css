@@ -12,12 +12,15 @@
   position: relative;
   overflow: hidden;
 }
-/* absolute는 부모요소의 안에서 나타난다. */
+/* absolute는 부모요소의 안에서 나타난다. 여기서 left:0px을 준 이유는 left:auto 상태에서 left가 -1000이 되는것은 transition 효과가 먹지 않아서
+처음에 오른쪽 버튼을 누른 순간(빨간색->주황색) 트랜지션 효과가 먹지 않는다. 그래서 left:0 속성을 넣은 것*/
 .slider-wrap ul.slider {
   width: 100%;
   height: 100%;
   position: absolute;
+  left: 0px;
 }
+
 /* 원래는 li요소들이 블록요소로 한줄씩 정렬되는데 float:left로 인해 오른쪽으로 쭉 정렬됨 */
 .slider-wrap ul.slider li {
   float: left;

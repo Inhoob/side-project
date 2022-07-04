@@ -16,6 +16,7 @@ export default class imageSlider {
     this.initSlideNumber();
     this.initSlideWidth();
     this.initSliderListWidth();
+    this.addEvent();
   }
 
   assignElement() {
@@ -39,9 +40,26 @@ export default class imageSlider {
 
   addEvent() {
     this.nextBtnEl.addEventListener('click', this.moveToRight.bind(this));
+    this.previousBtnEl.addEventListener('click', this.moveToLeft.bind(this));
   }
 
   moveToRight() {
-    this.#currentPosition + 1;
+    this.#currentPosition += 1;
+    if (this.#currentPosition === this.#slideNumber) {
+      this.#currentPosition = 0;
+    }
+    this.sliderListEl.style.left = `-${
+      this.#slideWidth * this.#currentPosition
+    }px`;
+  }
+
+  moveToLeft() {
+    this.#currentPosition -= 1;
+    if (this.#currentPosition === -1) {
+      this.#currentPosition = this.#slideNumber - 1;
+    }
+    this.sliderListEl.style.left = `-${
+      this.#slideWidth * this.#currentPosition
+    }px`;
   }
 }
