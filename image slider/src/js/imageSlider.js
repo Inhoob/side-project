@@ -98,6 +98,8 @@ export default class imageSlider {
     this.sliderListEl.style.left = `-${
       this.#slideWidth * this.#currentPosition
     }px`;
+    clearInterval(this.#intervalId);
+    this.#intervalId = setInterval(this.moveToRight.bind(this), 3000); // 이 두 줄이 next,prev 버튼과 autoplay의 독립성 보장
     this.setIndicator();
   }
 
@@ -109,6 +111,8 @@ export default class imageSlider {
     this.sliderListEl.style.left = `-${
       this.#slideWidth * this.#currentPosition
     }px`;
+    clearInterval(this.#intervalId);
+    this.#intervalId = setInterval(this.moveToLeft.bind(this), 3000);
     this.setIndicator();
   }
 
