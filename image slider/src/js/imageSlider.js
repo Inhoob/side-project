@@ -87,6 +87,7 @@ export default class imageSlider {
         this.#slideWidth * this.#currentPosition
       }px`;
     }
+
     this.setIndicator(); // position이 바꼈으니까
   }
 
