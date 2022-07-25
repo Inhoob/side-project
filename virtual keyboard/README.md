@@ -1,4 +1,4 @@
-![alt 키보드](/%EA%B0%80%EC%83%81%ED%82%A4%EB%B3%B4%EB%93%9C.png)
+![](https://velog.velcdn.com/images/colagom/post/5dbc8734-10a0-42cc-b9be-9d5b72a67c35/image.gif)
 
 ## Webpack
 
