@@ -8,7 +8,7 @@ module.exports = {
   output: {
     //빌드를 했을때 번들파일 관련 속성
     filename: "bundle.js", //번들될 파일의 이름
-    path: path.resolve(__dirname, "./docs"), //번들될 파일이 생성될 경로.path에 절대경로를 찾아주도록 함.
+    path: path.resolve(__dirname, "docs"), //번들될 파일이 생성될 경로.path에 절대경로를 찾아주도록 함.
     clean: true, //번들파일이 생성될 경로에 다른파일이 있다면 그것을 다 지우고 생성하는 속성
   },
   devtool: "source-map", //빌드한 파일과 원본 파일 연결
