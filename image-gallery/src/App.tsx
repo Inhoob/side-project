@@ -14,7 +14,13 @@ function App() {
           <br />
           이미지를 추가해주세요.
         </div>
-        <input type="file" ref={inpRef} />
+        <input
+          type="file"
+          ref={inpRef}
+          onChange={(event) => {
+            console.log(event.currentTarget.value);
+          }}
+        />
         <div
           className="plus-box"
           onClick={() => {
