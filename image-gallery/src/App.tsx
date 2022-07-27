@@ -1,11 +1,26 @@
 import React from "react";
 import ImageBox from "./components/ImageBox";
 import "./App.css";
-import { useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
+import { useDropzone } from "react-dropzone";
 
 function App() {
   const inpRef = useRef<HTMLInputElement>(null);
   const [imageList, setImageList] = useState<string[]>([]); //string list라는 뜻
+  const onDrop = useCallback((acceptedFiles: any) => {
+    // Do something with the files
+    console.log(acceptedFiles);
+    if (acceptedFiles.length) {
+      for (const file of acceptedFiles) {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onloadend = (event) => {
+          setImageList((prev) => [...prev, event.target?.result as string]);
+        };
+      }
+    }
+  }, []);
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
   return (
     <div className="container">
       <div className={"gallery-box " + (imageList.length > 0 && "row")}>
@@ -17,33 +32,37 @@ function App() {
           </div>
         )}
 
-        <input
-          type="file"
-          ref={inpRef}
-          onChange={(event) => {
-            if (event.currentTarget.files?.[0]) {
-              const file = event.currentTarget.files?.[0];
-
-              const reader = new FileReader();
-              reader.readAsDataURL(file);
-              reader.onloadend = (event) => {
-                setImageList((prev) => [
-                  ...prev,
-                  event.target?.result as string,
-                ]);
-              };
-            }
-          }}
-        />
         {imageList.map((el, idx) => (
           <ImageBox key={el + idx} src={el} />
         ))}
         <div
           className="plus-box"
-          onClick={() => {
-            inpRef.current?.click();
-          }}
+          {...getRootProps()}
+          //dropzone에 onclick 이벤트도 포함되어 있음.
+          // onClick={() => {
+          //   inpRef.current?.click();
+          // }}
         >
+          <input
+            type="file"
+            ref={inpRef}
+            {...getInputProps()}
+            //dropzone에 포함된 기능임
+            // onChange={(event) => {
+            //   if (event.currentTarget.files?.[0]) {
+            //     const file = event.currentTarget.files?.[0];
+
+            //     const reader = new FileReader();
+            //     reader.readAsDataURL(file);
+            //     reader.onloadend = (event) => {
+            //       setImageList((prev) => [
+            //         ...prev,
+            //         event.target?.result as string,
+            //       ]);
+            //     };
+            //   }
+            // }}
+          />
           +
         </div>
       </div>
