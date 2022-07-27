@@ -35,6 +35,9 @@ function App() {
             }
           }}
         />
+        {imageList.map((el, idx) => (
+          <ImageBox key={el + idx} src={el} />
+        ))}
         <div
           className="plus-box"
           onClick={() => {
@@ -43,9 +46,6 @@ function App() {
         >
           +
         </div>
-        {imageList.map((el, idx) => (
-          <ImageBox key={el + idx} src={el} />
-        ))}
       </div>
     </div>
   );
