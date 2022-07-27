@@ -12,12 +12,17 @@
   justify-content: center;
   line-height: 24px;
 }
-.initial-box {
+
+.gallery-box {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 80px;
+}
+.row {
+  flex-direction: row;
+  gap: 100px;
 }
 .container {
   width: 100vw;
@@ -42,6 +47,10 @@
   height: 200px;
   min-width: 200px;
   min-height: 200px;
+}
+.image-box img {
+  width: 200px;
+  height: 200px;
 }
 input {
   display: none;

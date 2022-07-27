@@ -8,7 +8,7 @@ function App() {
   const [imageList, setImageList] = useState<string[]>([]); //string list라는 뜻
   return (
     <div className="container">
-      <div className="initial-box">
+      <div className={"gallery-box " + (imageList.length > 0 && "row")}>
         {imageList.length === 0 && ( //imageBox길이가 0일때 이미지가 없다고 출력하는 방식. 이런 방식으로 코드를 줄일 수 있다.
           <div className="text-center">
             이미지가 없습니다
