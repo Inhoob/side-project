@@ -21,10 +21,18 @@ function App() {
           type="file"
           ref={inpRef}
           onChange={(event) => {
-            const v = event.currentTarget.value;
-            console.log(imageList);
-            const reader = new FileReader();
-            setImageList((prev) => [...prev, v]);
+            if (event.currentTarget.files?.[0]) {
+              const file = event.currentTarget.files?.[0];
+
+              const reader = new FileReader();
+              reader.readAsDataURL(file);
+              reader.onloadend = (event) => {
+                setImageList((prev) => [
+                  ...prev,
+                  event.target?.result as string,
+                ]);
+              };
+            }
           }}
         />
         <div
